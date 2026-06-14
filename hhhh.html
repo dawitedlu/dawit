@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Restaurant Menu</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+    background:#f5f5f5;
+    font-family:Arial, sans-serif;
+}
+
+/* Header */
+.hero{
+    background:linear-gradient(135deg,#7a1908,#a50016,#2b2b2b);
+    color:white;
+    text-align:center;
+    padding:70px 20px;
+}
+
+.logo{
+    font-size:70px;
+}
+
+.hero h1{
+    font-weight:700;
+}
+
+.hero p{
+    color:#f9d976;
+}
+
+/* Categories */
+
+.categories{
+    background:white;
+    padding:15px;
+    border-bottom:1px solid #ddd;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.category-btn{
+    border:none;
+    background:#ececec;
+    border-radius:30px;
+    padding:10px 20px;
+    margin-right:10px;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+.category-btn.active{
+    background:#8b3f00;
+    color:white;
+}
+
+/* Section */
+
+.menu-section{
+    max-width:900px;
+    margin:auto;
+    padding:30px 15px;
+}
+
+.section-title{
+    font-size:32px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+/* Cards */
+
+.menu-card{
+    background:white;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.item-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:start;
+}
+
+.price{
+    color:#8b3f00;
+    font-size:26px;
+    font-weight:700;
+}
+
+.desc{
+    color:#666;
+}
+
+.badge-tag{
+    background:#ffe9a8;
+    color:#9a6500;
+    border-radius:15px;
+    padding:4px 10px;
+    font-size:12px;
+}
+
+.badge-veg{
+    background:#d9ffe0;
+    color:green;
+}
+
+.badge-spicy{
+    background:#ffe0e0;
+    color:red;
+}
+
+.category-btn{
+    background:#ececec;
+    border:none;
+    padding:10px 20px;
+    border-radius:25px;
+}
+
+.category-btn.active{
+    background:#8b3f00;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+
+<section class="hero">
+
+<div class="logo">🍽️</div>
+
+<h1>Adot Juice</h1>
+
+<p>Authentic Italian Cuisine</p>
+
+<div class="mt-3">
+📍 Bote, Harar &nbsp;&nbsp;
+📞 +251 (212) 555-0123 &nbsp;&nbsp;
+🕒 Mon-Sun 11AM - 10PM
+</div>
+
+</section>
+
+<!-- Categories -->
+
+<div class="categories text-center">
+
+<div class="categories text-center">
+
+<button class="category-btn active"
+onclick="showCategory('starters', this)">
+🥗 Starters
+</button>
+
+<button class="category-btn"
+onclick="showCategory('pasta', this)">
+🍝 Pasta
+</button>
+
+<button class="category-btn"
+onclick="showCategory('pizza', this)">
+🍕 Pizza
+</button>
+
+<button class="category-btn"
+onclick="showCategory('main', this)">
+🥩 Main Courses
+</button>
+
+<button class="category-btn"
+onclick="showCategory('dessert', this)">
+🍰 Desserts
+</button>
+
+</div>
+
+</div>
+
+<!-- Starters -->
+<div id="starters" class="menu-section category-content">
+
+<h2>🥗 Starters</h2>
+
+<div class="menu-card">
+    <h4>Bruschetta al Pomodoro
+        <span class="badge-tag">Popular</span>
+        <span class="badge-tag badge-veg">Veg</span>
+    </h4>
+    <p>Grilled bread topped with tomatoes.</p><div class="price">$8.50</div>
+</div>
+
+
+</div>
+
+<!-- Pasta -->
+<div id="pasta" class="menu-section category-content d-none">
+
+<h2>🍝 Pasta</h2>
+
+<div class="menu-card">
+    <h4>Spaghetti Carbonara</h4>
+    <p>Creamy sauce with bacon and parmesan.</p>
+</div>
+
+<div class="menu-card">
+    <h4>Fettuccine Alfredo</h4>
+    <p>Rich creamy alfredo sauce.</p>
+</div>
+
+</div>
+
+<!-- Pizza -->
+<div id="pizza" class="menu-section category-content d-none">
+
+<h2>🍕 Pizza</h2>
+
+<div class="menu-card">
+    <h4>Margherita</h4>
+    <p>Tomato sauce and mozzarella.</p>
+</div>
+
+</div>
+
+<!-- Main -->
+<div id="main" class="menu-section category-content d-none">
+
+<h2>🥩 Main Courses</h2>
+
+<div class="menu-card">
+    <h4>Grilled Steak</h4>
+    <p>Served with vegetables.</p>
+</div>
+
+</div>
+
+<!-- Dessert -->
+<div id="dessert" class="menu-section category-content d-none">
+
+<h2>🍰 Desserts</h2>
+
+<div class="menu-card">
+    <h4>Tiramisu</h4>
+    <p>Classic Italian dessert.</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<script>
+
+function showCategory(categoryId, button){
+
+    // Hide all sections
+    document.querySelectorAll('.category-content')
+        .forEach(section => {
+            section.classList.add('d-none');
+        });
+
+    // Show selected section
+    document.getElementById(categoryId)
+        .classList.remove('d-none');
+
+    // Remove active from all buttons
+    document.querySelectorAll('.category-btn')
+        .forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+    // Add active to clicked button
+    button.classList.add('active');
+}
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
